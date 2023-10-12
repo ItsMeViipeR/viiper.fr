@@ -14,24 +14,24 @@ export const Header = () => {
   }
 
   return (
-    <header className="border-b border-b-accent mb-2">
+    <header className="fixed border-b border-b-accent mb-2 w-full">
         <div className="container flex items-center py-2 m-auto gap-1">
             <h2 className="text-2xl font-bold mr-auto">ViipeR</h2>
 
             <nav className={"max-[500px]:hidden"}>
                 <ul className={"flex flex-row"}>
                     <li className={"ml-2"}>
-                        <a href="/">Accueil</a>
+                        <a href="/" className={"hover:underline"}>Accueil</a>
                     </li>
-                    <li className={"ml-2"}>
-                        <a href="/about">À propos</a>
+                    <li className={"ml-8"}>
+                        <a href="/about" className={"hover:underline"}>À propos</a>
                     </li>
-                    <li className="ml-2">
+                    <li className="ml-8">
                         <a href="https://discord.gg/zGk6BvGYx7" target={"_blank"} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all">
                             Discord
                         </a>
                     </li>
-                    <li className="ml-2">
+                    <li className="ml-8">
                         <a href="https://github.com/ItsMeViipeR" target={"_blank"} className="bg-gray-800 hover:bg-black text-white font-bold py-2 px-4 rounded transition-all">
                             GitHub
                         </a>

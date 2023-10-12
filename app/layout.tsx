@@ -2,7 +2,6 @@ import { ThemeProvider } from "@/src/theme/ThemeProvider"
 import "./globals.css"
 import { Header } from "@/src/feature/layout/Header"
 import clsx from "clsx"
-import { Inter } from "next/font/google"
 import {Footer} from "@/src/feature/layout/Footer";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
