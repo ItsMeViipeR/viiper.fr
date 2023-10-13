@@ -1,5 +1,7 @@
 "use client";
 import React from 'react';
+import Head from "next/head";
+import {Metadata} from "next";
 
 export default function CV() {
     const scrollToContent = (contentId: string) => {
@@ -13,8 +15,34 @@ export default function CV() {
         }
     }
 
+    const METADATAS: Metadata = {
+        title: "ViipeR - CV",
+        description: "Découvrez mon CV directement en ligne.",
+        keywords: ["cv", "viiper"],
+        openGraph: {
+            images: ["https://viiper.fr/logo.jpg"],
+            type: "website",
+            url: "https://viiper.fr/cv",
+        }
+    }
+
     return (
       <>
+          <head>
+              {
+                  Object.keys(METADATAS).map((key) => {
+                      if(key === "title")
+                          return <title key={key}>{`${METADATAS[key]}`}</title>
+                      if(key === "openGraph")
+                          return Object.keys(METADATAS[key]!).map((key2) => {
+                              // @ts-ignore
+                              return <meta key={key2} property={`og:${key2}`} content={METADATAS[key]![key2]}/>
+                          })
+                      // @ts-ignore
+                      return <meta key={key} name={key} content={METADATAS[key]}/>
+                  })
+              }
+          </head>
           <div className="flex flex-col items-center justify-center min-h-screen py-2 max-[500px]:max-w-xs max-[500px]:items-stretch" id={"base"}>
               <main className="flex flex-col items-center justify-center flex-1 px-32 text-center">
                   <div className="mb-8">
@@ -34,7 +62,7 @@ export default function CV() {
           </div>
 
           <div id="cv"></div>
-          <div className="flex flex-col items-center justify-center py-10 mt-24 max-[500px]:mt-5" id="cv">
+          <div className="flex flex-col items-center justify-center py-10 mt-24 max-[500px]:mt-5">
 
               <div className="min-[500px]:flex min-[500px]:flex-col min-[500px]:flex-1 min-[500px]:px-32 w-full border-4 border-gray-900 p-6 dark:border-gray-700">
                   <h2 className="text-4xl font-bold mb-24 text-center underline">
@@ -42,17 +70,16 @@ export default function CV() {
                   </h2>
                   <div className="font-extrabold text-2xl mb-20 max-[500px]:hidden">
                       <div className={"flex flex-row"}>
-                          <h2>Nicolas</h2>
+                          <h2>Nicolas</h2>&nbsp;
+                          <h2>AMATI</h2>
                           <h2 className={"ml-auto max-[500px]:ml-0"}>06 51 72 42 74</h2>
                       </div>
-                      <h2>AMATI</h2>
                       <a href="mailto:nicolas.amati@gmail.com" className={"underline"}>nicolas.amati@gmail.com</a><br/>
                       <a href="/" className={"underline"}>www.viiper.fr</a>
                   </div>
                   <div className={"flex flex-row max-[500px]:flex-col font-extrabold min-[500px]:hidden"}>
                       <div className={"flex flex-col"}>
-                          <h2 className={"mb-1.5"}>Nicolas</h2>
-                          <h2 className={"mb-1.5"}>AMATI</h2>
+                          <h2 className={"mb-1.5"}>Nicolas AMATI</h2>
                           <h2 className={"mb-1.5"}>06 51 72 42 74</h2>
                           <a href="mailto:nicolas.amati@gmail.com" className={"underline mb-1.5"}>nicolas.amati@gmail.com</a>
                           <a href="/" className={"underline mb-1.5"}>www.viiper.fr</a>
@@ -97,9 +124,33 @@ export default function CV() {
                           </div>
                       </div>
                   </div>
+
+                  <hr className={"mt-20"}/>
+
+                  <div className="flex flex-col mt-20">
+                      <h2 className="text-3xl font-bold text-center underline mb-20">
+                          Formations
+                      </h2>
+
+                      <div className="flex flex-col">
+
+                          <div className="flex flex-col border-4 border-gray-900 dark:border-gray-700 mb-4 sm:flex-row">
+                              <div className="p-6">
+                                  <h2 className="text-2xl font-bold mb-4">
+                                      Bac Technologique STI2D
+                                  </h2>
+                                  <h3 className="text-xl font-bold mb-4">
+                                      Spétialité SIN (Systèmes d&apos;Information et Numérique)
+                                  </h3>
+                                  <p className="text-lg">
+                                      Lycée Voillaume, Aulnay-sous-Bois
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
           </div>
-
       </>
     )
 }

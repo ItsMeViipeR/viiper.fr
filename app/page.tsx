@@ -1,8 +1,37 @@
 "use client";
 
+import {Metadata} from "next";
+import React from "react";
+
 export default function Home() {
+  const METADATAS: Metadata = {
+      title: "ViipeR",
+      description: "Bienvenue sur mon site.",
+      keywords: ["viiper"],
+      openGraph: {
+          images: ["https://viiper.fr/logo.jpg"],
+          type: "website",
+          url: "https://viiper.fr/cv",
+      }
+  }
+
   return (
     <>
+        <head>
+            {
+                Object.keys(METADATAS).map((key) => {
+                    if(key === "title")
+                        return <title key={key}>{`${METADATAS[key]}`}</title>
+                    if(key === "openGraph")
+                        return Object.keys(METADATAS[key]!).map((key2) => {
+                            // @ts-ignore
+                            return <meta key={key2} property={`og:${key2}`} content={METADATAS[key]![key2]}/>
+                        })
+                    // @ts-ignore
+                    return <meta key={key} name={key} content={METADATAS[key]}/>
+                })
+            }
+        </head>
         <div className="flex flex-col items-center justify-center min-h-screen py-2 max-[500px]:max-w-xs max-[500px]:items-stretch">
             <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
                 <h1 className="text-6xl font-bold max-[500px]:mt-32">

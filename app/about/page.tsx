@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import {Timeline} from "@/components/Timeline/Timeline";
+import {Metadata} from "next";
 
 export default function About() {
     const age = new Date().getFullYear() - 2005;
@@ -15,8 +16,34 @@ export default function About() {
         }
     }
 
+    const METADATAS: Metadata = {
+        title: "ViipeR - À propos",
+        description: "Bienvenue sur mon site.",
+        keywords: ["viiper", "à propos", "about", "a propos"],
+        openGraph: {
+            images: ["https://viiper.fr/logo.jpg"],
+            type: "website",
+            url: "https://viiper.fr/cv",
+        }
+    }
+
     return (
       <>
+          <head>
+              {
+                  Object.keys(METADATAS).map((key) => {
+                      if(key === "title")
+                          return <title key={key}>{`${METADATAS[key]}`}</title>
+                      if(key === "openGraph")
+                          return Object.keys(METADATAS[key]!).map((key2) => {
+                              // @ts-ignore
+                              return <meta key={key2} property={`og:${key2}`} content={METADATAS[key]![key2]}/>
+                          })
+                      // @ts-ignore
+                      return <meta key={key} name={key} content={METADATAS[key]}/>
+                  })
+              }
+          </head>
           <div className="flex flex-col items-center justify-center min-h-screen py-2 max-[500px]:max-w-xs max-[500px]:items-stretch" id={"base"}>
               <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
                   <div className="mb-8">
@@ -35,7 +62,8 @@ export default function About() {
               </main>
           </div>
 
-          <div className="flex flex-col items-center justify-center py-10" id="content">
+          <div id="content"></div>
+          <div className="flex flex-col items-center justify-center py-10 mt-24 max-[500px]:mt-5">
               <h2 className="text-4xl font-bold mb-4">
                   Qui suis-je ?
               </h2>
