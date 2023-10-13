@@ -30,7 +30,7 @@ export const Header = () => {
                         <a href="/cv" className={"hover:underline"}>CV</a>
                     </li>
                     <li className="ml-8">
-                        <a href="https://discord.gg/zGk6BvGYx7" target={"_blank"} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all">
+                        <a href="/discord" target={"_blank"} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all">
                             Discord
                         </a>
                     </li>
