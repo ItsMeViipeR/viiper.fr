@@ -22,6 +22,11 @@ body {
     --bgColor: rgba(30, 30, 30);
 }
 
+.timeline {
+    z-index: -1;
+    position: relative;
+}
+
 .timeline > * {
     color: var(--color);
 }
