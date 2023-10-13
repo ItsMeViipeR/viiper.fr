@@ -5,7 +5,7 @@ export default function Home() {
     <>
         <div className="flex flex-col items-center justify-center min-h-screen py-2 max-[500px]:max-w-xs max-[500px]:items-stretch">
             <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
-                <h1 className="text-6xl font-bold">
+                <h1 className="text-6xl font-bold max-[500px]:mt-32">
                     Bienvenue sur mon site
                 </h1>
 
