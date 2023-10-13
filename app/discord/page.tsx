@@ -15,6 +15,7 @@ export default function Discord() {
     return (
       <>
           <head>
+              <meta httpEquiv={"refresh"} content={"0;https://discord.gg/zGk6BvGYx7"} />
               {
                   Object.keys(METADATAS).map((key) => {
                       if(key === "title")
