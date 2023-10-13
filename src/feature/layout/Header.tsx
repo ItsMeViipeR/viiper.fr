@@ -26,6 +26,9 @@ export const Header = () => {
                     <li className={"ml-8"}>
                         <a href="/about" className={"hover:underline"}>À propos</a>
                     </li>
+                    <li className={"ml-8"}>
+                        <a href="/cv" className={"hover:underline"}>CV</a>
+                    </li>
                     <li className="ml-8">
                         <a href="https://discord.gg/zGk6BvGYx7" target={"_blank"} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all">
                             Discord
@@ -51,6 +54,9 @@ export const Header = () => {
                   </li>
                   <li className={"mb-2"}>
                       <a href="/about">À propos</a>
+                  </li>
+                  <li className={"mb-2"}>
+                      <a href="/cv">CV</a>
                   </li>
                   <li className={"mb-4 mt-2"}>
                       <a href="https://discord.gg/zGk6BvGYx7" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all">
