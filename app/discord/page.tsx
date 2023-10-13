@@ -7,7 +7,7 @@ export default function Discord() {
         title: "ViipeR - Discord",
         description: "Rejoignez mon serveur Discord.",
         keywords: ["viiper", "discord"],
-        twitter: {
+        openGraph: {
             images: ["https://viiper.fr/logo.jpg"],
         }
     }
@@ -15,7 +15,6 @@ export default function Discord() {
     return (
       <>
           <head>
-              <meta httpEquiv="refresh" content = "2;url=https://discord.gg/zGk6BvGYx7" />
               {
                   Object.keys(METADATAS).map((key) => {
                       if(key === "title")
@@ -23,7 +22,7 @@ export default function Discord() {
                       if(key === "openGraph")
                           return Object.keys(METADATAS[key]!).map((key2) => {
                               // @ts-ignore
-                              return <meta key={key2} property={`og:${key2}`} content={METADATAS[key]![key2]}/>
+                              return <meta key={key2} property={`og:${key2.replace("images", "image")}`} content={METADATAS[key]![key2]}/>
                           })
                       if(key === "twitter")
                           return Object.keys(METADATAS[key]!).map((key2) => {
