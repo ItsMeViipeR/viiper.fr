@@ -106,7 +106,7 @@ export default function CV() {
                                       Développeur Web
                                   </h2>
                                   <h3 className="text-xl font-bold mb-4">
-                                      Freelance
+                                      Hobbie
                                   </h3>
                                   <p className="text-lg">
                                       Développement d&apos;applications web sur mesure.
@@ -120,7 +120,7 @@ export default function CV() {
                                       Développeur Rust
                                   </h2>
                                   <h3 className="text-xl font-bold mb-4">
-                                      Freelance
+                                      Hobbie
                                   </h3>
                                   <p className="text-lg">
                                       Développement d&apos;applications bureau sur mesure et multi-plateformes.
