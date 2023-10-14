@@ -11,7 +11,6 @@ export default function About() {
             contentElement.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start',
-
             });
         }
     }
@@ -35,6 +34,11 @@ export default function About() {
                       if(key === "title")
                           return <title key={key}>{`${METADATAS[key]}`}</title>
                       if(key === "openGraph")
+                          return Object.keys(METADATAS[key]!).map((key2) => {
+                              // @ts-ignore
+                              return <meta key={key2} property={`og:${key2.replace("images", "image")}`} content={METADATAS[key]![key2]}/>
+                          })
+                      if(key === "twitter")
                           return Object.keys(METADATAS[key]!).map((key2) => {
                               // @ts-ignore
                               return <meta key={key2} property={`og:${key2}`} content={METADATAS[key]![key2]}/>
