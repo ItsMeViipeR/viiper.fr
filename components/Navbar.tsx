@@ -7,7 +7,7 @@ export function Navbar() {
   const [navbarOpened, setNavbarOpened] = useState(false);
 
   return (
-    <header>
+    <header className="md:fixed md:left-52 md:right-52 md:z-50">
       <div className="items-center hidden md:flex py-4">
         <Image
           src="https://avatars.githubusercontent.com/u/71552277?v=4"
@@ -97,43 +97,22 @@ export function Navbar() {
                 className="rounded-full w-16 h-16 mb-4"
               />
               <ul className="flex flex-col items-baseline gap-8">
-                <li className="hidden sm:block">
+                <li>
                   <a href="/#skills" className="text-2xl md:text-base">
-                    <span className="font-mono text-primary1">0.</span>{" "}
+                    <span className="font-mono text-primary">1.</span>{" "}
                     <span>Skills</span>
                   </a>
                 </li>
                 <li>
                   <a href="/#projects" className="text-2xl md:text-base">
-                    <span className="font-mono text-primary1">1.</span>{" "}
+                    <span className="font-mono text-primary">2.</span>{" "}
                     <span>Projects</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/#courses" className="text-2xl md:text-base">
-                    <span className="font-mono text-primary1">2.</span>{" "}
-                    <span>Courses</span>
-                  </a>
-                </li>
-                <li>
                   <a href="/#contact" className="text-2xl md:text-base">
-                    <span className="font-mono text-primary1">3.</span>{" "}
+                    <span className="font-mono text-primary">3.</span>{" "}
                     <span>Contact</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/affiliate" className="text-2xl md:text-base">
-                    <span className="font-mono text-primary1">4.</span>{" "}
-                    <span>Affiliate</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://codelynx.dev"
-                    className="text-2xl md:text-base"
-                  >
-                    <span className="font-mono text-primary1">5.</span>{" "}
-                    <span>Blog</span>
                   </a>
                 </li>
               </ul>
