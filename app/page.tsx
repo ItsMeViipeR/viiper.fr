@@ -13,11 +13,11 @@ export default function Home() {
         <div className="grid customgrid center">
           <div className="grid-left">
             <h1 className="text-4xl font-bold mb-4">
-              Hi, I'm <span className="text-primary">ViipeR</span>
+              Hi, I&apos;m <span className="text-primary">ViipeR</span>
             </h1>
             <p className="text-2xl mb-4">
-              I'm a front-end developer, designer, and student. I love to build
-              things that make a difference.
+              I&apos;m a front-end developer, designer, and student. I love to
+              build things that make a difference.
             </p>
           </div>
           <div className="grid-right">
@@ -95,8 +95,8 @@ export default function Home() {
             <Box>
               <h1 className="font-bold text-2xl pb-4">MKD Previewer</h1>
               <p>
-                Mardown "MKD" Previewer is a website that allows you to
-                visualize your markdown for free.
+                Mardown &lsquo;MKD&rsquo; Previewer is a website that allows you
+                to visualize your markdown for free.
               </p>
               <div className="flex flex-row gap-4">
                 <span className="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm bg-purple-700 text-purple-100">
