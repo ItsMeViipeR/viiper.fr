@@ -6,6 +6,13 @@ import { useState } from "react";
 export function Navbar() {
   const [navbarOpened, setNavbarOpened] = useState(false);
 
+  const jumpTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="md:fixed md:left-52 md:right-52 md:z-50">
       <div className="items-center hidden md:flex py-4">
@@ -19,20 +26,38 @@ export function Navbar() {
         <nav>
           <ul className="flex items-baseline gap-6">
             <li className="hidden sm:block">
-              <a href="/#skills" className="text-2xl md:text-base">
-                <span className="font-mono text-primary">0.</span>{" "}
+              <a
+                onClick={() => jumpTo("home")}
+                className="text-2xl md:text-base"
+              >
+                <span className="font-mono text-primary">1.</span>{" "}
+                <span>Home</span>
+              </a>
+            </li>
+            <li className="hidden sm:block">
+              <a
+                onClick={() => jumpTo("skills")}
+                className="text-2xl md:text-base"
+              >
+                <span className="font-mono text-primary">2.</span>{" "}
                 <span>Skills</span>
               </a>
             </li>
             <li>
-              <a href="/#projects" className="text-2xl md:text-base">
-                <span className="font-mono text-primary">1.</span>{" "}
+              <a
+                onClick={() => jumpTo("projects")}
+                className="text-2xl md:text-base"
+              >
+                <span className="font-mono text-primary">3.</span>{" "}
                 <span>Projects</span>
               </a>
             </li>
             <li>
-              <a href="/#contact" className="text-2xl md:text-base">
-                <span className="font-mono text-primary">3.</span>{" "}
+              <a
+                onClick={() => jumpTo("contact")}
+                className="text-2xl md:text-base"
+              >
+                <span className="font-mono text-primary">4.</span>{" "}
                 <span>Contact</span>
               </a>
             </li>
