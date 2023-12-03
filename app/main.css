@@ -1,0 +1,34 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.customgrid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 10rem;
+
+  min-height: 100vh;
+}
+
+.customgrid.center {
+  place-items: center;
+}
+
+@media screen and (max-width: 767px) /* phone size */ {
+  .customgrid {
+    grid-gap: 1rem;
+  }
+
+  img {
+    max-width: 150px;
+  }
+}
+
+section {
+  text-align: left;
+  padding-top: 10%;
+  min-height: 100vh;
+}
+
+a {
+  cursor: pointer;
+}
