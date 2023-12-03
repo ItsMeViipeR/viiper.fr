@@ -36,10 +36,19 @@ export function Navbar() {
             </li>
             <li className="hidden sm:block">
               <a
-                onClick={() => jumpTo("skills")}
+                onClick={() => jumpTo("about")}
                 className="text-2xl md:text-base"
               >
                 <span className="font-mono text-primary">2.</span>{" "}
+                <span>About</span>
+              </a>
+            </li>
+            <li className="hidden sm:block">
+              <a
+                onClick={() => jumpTo("skills")}
+                className="text-2xl md:text-base"
+              >
+                <span className="font-mono text-primary">3.</span>{" "}
                 <span>Skills</span>
               </a>
             </li>
@@ -48,16 +57,16 @@ export function Navbar() {
                 onClick={() => jumpTo("projects")}
                 className="text-2xl md:text-base"
               >
-                <span className="font-mono text-primary">3.</span>{" "}
+                <span className="font-mono text-primary">4.</span>{" "}
                 <span>Projects</span>
               </a>
             </li>
             <li>
               <a
-                onClick={() => jumpTo("contact")}
+                href="mailto:nicolas.amati@gmail.com"
                 className="text-2xl md:text-base"
               >
-                <span className="font-mono text-primary">4.</span>{" "}
+                <span className="font-mono text-primary">5.</span>{" "}
                 <span>Contact</span>
               </a>
             </li>
@@ -123,20 +132,38 @@ export function Navbar() {
               />
               <ul className="flex flex-col items-baseline gap-8">
                 <li>
-                  <a href="/#skills" className="text-2xl md:text-base">
+                  <a
+                    onClick={() => jumpTo("about")}
+                    className="text-2xl md:text-base"
+                  >
                     <span className="font-mono text-primary">1.</span>{" "}
+                    <span>About</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={() => jumpTo("skills")}
+                    className="text-2xl md:text-base"
+                  >
+                    <span className="font-mono text-primary">2.</span>{" "}
                     <span>Skills</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/#projects" className="text-2xl md:text-base">
-                    <span className="font-mono text-primary">2.</span>{" "}
+                  <a
+                    onClick={() => jumpTo("projects")}
+                    className="text-2xl md:text-base"
+                  >
+                    <span className="font-mono text-primary">3.</span>{" "}
                     <span>Projects</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/#contact" className="text-2xl md:text-base">
-                    <span className="font-mono text-primary">3.</span>{" "}
+                  <a
+                    href="mailto:nicolas.amati@gmail.com"
+                    className="text-2xl md:text-base"
+                  >
+                    <span className="font-mono text-primary">4.</span>{" "}
                     <span>Contact</span>
                   </a>
                 </li>

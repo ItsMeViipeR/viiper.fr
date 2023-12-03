@@ -27,8 +27,13 @@ section {
   text-align: left;
   padding-top: 10%;
   min-height: 50vh;
+  @apply pb-6;
 }
 
 a {
   cursor: pointer;
+}
+
+.link {
+  @apply text-primary;
 }

@@ -5,6 +5,11 @@ import "@/components/Box.css";
 import { Box } from "@/components/Box";
 
 export default function Home() {
+  const age = Math.floor(
+    (Date.now() - new Date("2005-04-13").getTime()) /
+      (1000 * 60 * 60 * 24 * 365.25)
+  );
+
   return (
     <div className="min-h-full max-w-7xl m-auto p-4 relative" id="home">
       <Navbar />
@@ -30,6 +35,50 @@ export default function Home() {
             />
           </div>
         </div>
+        <hr />
+        <section id="about">
+          <h1 className="font-extrabold text-2xl text-center pb-6">About</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-24">
+            <Box>
+              <h1 className="font-bold text-xl pb-4">Who am I?</h1>
+              <p>
+                I&apos;m a {age} years old student and a self-taught developer.
+              </p>
+            </Box>
+            <Box>
+              <h1 className="font-bold text-xl pb-4">What do I do?</h1>
+              <p>
+                I&apos;m a front-end developer, designer and web integrator.
+              </p>
+            </Box>
+            <Box>
+              <h1 className="font-bold text-xl pb-4">What do I use?</h1>
+              <p>
+                To create my websites I use{" "}
+                <a href="#" className="link">
+                  Microsoft Visual Studio Code
+                </a>
+                ,{" "}
+                <a href="#" className="link">
+                  React
+                </a>
+                ,{" "}
+                <a href="#" className="link">
+                  Next.js
+                </a>
+                ,{" "}
+                <a href="#" className="link">
+                  Prisma
+                </a>{" "}
+                and{" "}
+                <a href="#" className="link">
+                  Docker
+                </a>
+                .
+              </p>
+            </Box>
+          </div>
+        </section>
         <hr />
         <section id="skills">
           <h1 className="font-extrabold text-2xl text-center pb-6">Skills</h1>
