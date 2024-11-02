@@ -44,7 +44,7 @@
             :transition="{ delay: 0.6 }"
           >
             <ChevronDown
-              class="w-8 h-8 mx-auto animate-bounce"
+              class="w-8 h-8 mx-auto animate-bounce cursor-pointer"
               @click="goToAbout"
             />
           </motion-div>
