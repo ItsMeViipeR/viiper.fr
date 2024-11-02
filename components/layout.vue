@@ -3,7 +3,7 @@ import "@/styles/global.css";
 </script>
 
 <template>
-  <Header />
-
   <slot />
+
+  <Footer />
 </template>
