@@ -1,3 +1,43 @@
+<script setup lang="ts">
+import { Code, Check, Globe, ChevronDown, Database } from "lucide-vue-next";
+
+useSeoMeta({
+  title: "ViipeR - Web Developer & Designer",
+  description: "Welcome to my portfolio!",
+});
+
+let goTo = (href: string) => {
+  window.open(href, "_blank");
+};
+
+const projects = [
+  {
+    name: "Gitit",
+    description: "A simple CLI tool to manage your GitHub repositories.",
+    img: "https://preview.redd.it/g38817mqb1361.png?auto=webp&s=61f191d6a42b645d77cbbc6ce5d6f08686b6e77a",
+    href: "https://github.com/ItsMeViipeR/gitit",
+  },
+  {
+    name: "files.dll",
+    description: "A simple DLL writen in Rust to manipulate files.",
+    img: "https://t4.ftcdn.net/jpg/09/02/93/31/240_F_902933189_v6yVCYq5Z4qyNHPEYm0Jb7tLg6NH7rBv.jpg",
+    href: "https://github.com/ItsMeViipeR/files.dll",
+  },
+  {
+    name: "JSON",
+    description: "A simple JSON editor built with Rust.",
+    img: "https://imgs.search.brave.com/tkZmPdVcFlKhpIDX2NSS3ioslQFeP-XnUgZPnYjDIWc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA4Lzk2LzM4LzMw/LzM2MF9GXzg5NjM4/MzAwNV9LVm5YeU1W/Qm01UDBmTkV0TnFH/VlNBN0dWQUw1RWFl/YS5qcGc",
+    href: "https://github.com/ItsMeViipeR/json",
+  },
+];
+</script>
+
+<script lang="ts">
+let goToAbout = () => {
+  document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+};
+</script>
+
 <template>
   <Layout>
     <div class="min-h-screen bg-black text-white overflow-hidden">
@@ -151,7 +191,9 @@
                 <p class="text-gray-400 mb-4">
                   {{ project.description }}
                 </p>
-                <Button variant="outline">View Project</Button>
+                <Button variant="outline" @click="goTo(project.href)"
+                  >View Project</Button
+                >
               </div>
             </motion-div>
           </div>
@@ -160,31 +202,3 @@
     </div>
   </Layout>
 </template>
-
-<script setup lang="ts">
-import { Code, Check, Globe, ChevronDown, Database } from "lucide-vue-next";
-
-const projects = [
-  {
-    name: "Project 1",
-    description: "A brief description of the project and its features.",
-    img: "https://placehold.co/200x300",
-  },
-  {
-    name: "Project 2",
-    description: "A brief description of the project and its features.",
-    img: "https://placehold.co/200x300",
-  },
-  {
-    name: "Project 3",
-    description: "A brief description of the project and its features.",
-    img: "https://placehold.co/200x300",
-  },
-];
-</script>
-
-<script lang="ts">
-let goToAbout = () => {
-  document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-};
-</script>
