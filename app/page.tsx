@@ -5,7 +5,14 @@ import { motion } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
 
-const projects = [
+type Project = {
+  name: string;
+  description: string;
+  img: string;
+  href: string;
+};
+
+const projects: Project[] = [
   {
     name: "Gitit",
     description: "A simple CLI tool to manage your GitHub repositories.",
@@ -186,7 +193,9 @@ export default function Home() {
                   transition={{ duration: 0.5 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <img
+                  <Image
+                    width={400}
+                    height={48}
                     src={project.img}
                     alt={`Project ${index}`}
                     className="w-full h-48 object-cover"
