@@ -1,6 +1,7 @@
 "use client";
 
 import Form from "next/form";
+import { useState } from "react";
 
 interface Matieres {
   s1: number;
@@ -31,6 +32,9 @@ const calculMoyenneS2 = (matieres: Matieres): number => {
 };
 
 export default function Notes() {
+  const [moyenneS2, setMoyenneS2] = useState<number | null>(null);
+  const [moyenneAnnee, setmoyenneAnnee] = useState<number | null>(null);
+
   const onSubmit = (formData: FormData) => {
     const matieres: Matieres = {
       s1: Number(formData.get("s1")),
@@ -44,11 +48,10 @@ export default function Notes() {
       ec: Number(formData.get("ec")),
     };
 
-    const moyenneS2 = calculMoyenneS2(matieres);
-    const moyenneAnnee = (matieres.s1 + moyenneS2) / 2;
-
-    console.log("Moyenne du semestre 2:", moyenneS2);
-    console.log("Moyenne de l'année:", moyenneAnnee);
+    setMoyenneS2(Math.round(calculMoyenneS2(matieres) * 1000) / 1000);
+    setmoyenneAnnee(
+      Math.round(((matieres.s1 + calculMoyenneS2(matieres)) / 2) * 1000) / 1000
+    );
   };
 
   return (
@@ -74,6 +77,7 @@ export default function Notes() {
             name="s1"
             placeholder="Note du semestre 1"
             className="border border-gray-300 p-2 rounded"
+            required={true}
           />
           <input
             type="number"
@@ -82,8 +86,9 @@ export default function Notes() {
             max={20}
             defaultValue={10}
             name="pi"
-            placeholder="Note en impérative"
+            placeholder="Impérative"
             className="border border-gray-300 p-2 rounded"
+            required={true}
           />
           <input
             type="number"
@@ -92,8 +97,9 @@ export default function Notes() {
             max={20}
             defaultValue={10}
             name="pl"
-            placeholder="PL"
+            placeholder="Logique"
             className="border border-gray-300 p-2 rounded"
+            required={true}
           />
           <input
             type="number"
@@ -102,8 +108,9 @@ export default function Notes() {
             max={20}
             defaultValue={10}
             name="inf"
-            placeholder="INF"
+            placeholder="Fondamentale"
             className="border border-gray-300 p-2 rounded"
+            required={true}
           />
           <input
             type="number"
@@ -112,8 +119,9 @@ export default function Notes() {
             max={20}
             defaultValue={10}
             name="pdlmdj"
-            placeholder="PDLMDJ"
+            placeholder="Moteurs de jeu"
             className="border border-gray-300 p-2 rounded"
+            required={true}
           />
           <input
             type="number"
@@ -122,8 +130,9 @@ export default function Notes() {
             max={20}
             defaultValue={10}
             name="cgr"
-            placeholder="CGR"
+            placeholder="Ressources"
             className="border border-gray-300 p-2 rounded"
+            required={true}
           />
           <input
             type="number"
@@ -132,8 +141,9 @@ export default function Notes() {
             max={20}
             defaultValue={10}
             name="oic"
-            placeholder="OIC"
+            placeholder="Outils informatiques"
             className="border border-gray-300 p-2 rounded"
+            required={true}
           />
           <input
             type="number"
@@ -144,6 +154,7 @@ export default function Notes() {
             name="anglais"
             placeholder="Anglais"
             className="border border-gray-300 p-2 rounded"
+            required={true}
           />
           <input
             type="number"
@@ -152,8 +163,9 @@ export default function Notes() {
             max={20}
             defaultValue={10}
             name="ec"
-            placeholder="EC"
+            placeholder="EC libre"
             className="border border-gray-300 p-2 rounded"
+            required={true}
           />
         </div>
         <button
@@ -163,6 +175,16 @@ export default function Notes() {
           Submit
         </button>
       </Form>
+      {moyenneS2 && (
+        <div className="mt-8">
+          <p className="text-xl font-bold">
+            Moyenne du semestre 2: {moyenneS2}
+          </p>
+          <p className="text-xl font-bold">
+            Moyenne de l&apos;année: {moyenneAnnee}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
