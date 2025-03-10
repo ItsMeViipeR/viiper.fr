@@ -9,22 +9,13 @@ interface Matieres {
   secu: number;
   moteursdejeu: number;
   devmobile: number;
-  projettut: number;
   anglais: number;
   objmaster: number;
 }
 
 const calculmoyenneS1 = (matieres: Matieres): number => {
-  const {
-    algoav,
-    intcomp,
-    secu,
-    moteursdejeu,
-    devmobile,
-    projettut,
-    anglais,
-    objmaster,
-  } = matieres;
+  const { algoav, intcomp, secu, moteursdejeu, devmobile, anglais, objmaster } =
+    matieres;
 
   return (
     (algoav * 6 +
@@ -32,10 +23,9 @@ const calculmoyenneS1 = (matieres: Matieres): number => {
       secu * 6 +
       moteursdejeu * 3 +
       devmobile * 3 +
-      projettut * 1.5 +
       anglais * 1.5 +
       objmaster * 1.5) /
-    28.5
+    27
   );
 };
 
@@ -49,7 +39,6 @@ export default function L2S1() {
       secu: Number(formData.get("secu")),
       moteursdejeu: Number(formData.get("moteursdejeu")),
       devmobile: Number(formData.get("devmobile")),
-      projettut: Number(formData.get("projettut")),
       anglais: Number(formData.get("anglais")),
       objmaster: Number(formData.get("objmaster")),
     };
@@ -118,16 +107,6 @@ export default function L2S1() {
             max={20}
             name="devmobile"
             placeholder="Développement mobile"
-            className="border border-gray-300 p-2 rounded"
-            required={true}
-          />
-          <input
-            type="number"
-            step={0.001}
-            min={0}
-            max={20}
-            name="projettut"
-            placeholder="Projet tuteuré : état de l'art"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />

@@ -10,7 +10,6 @@ interface Matieres {
   devlogicielslibres: number;
   devcg: number;
   iapourlesjeux: number;
-  projettut: number;
   droit: number;
   stage?: number;
 }
@@ -22,7 +21,6 @@ const calculmoyenneS2 = (matieres: Matieres): number => {
     devlogicielslibres,
     devcg,
     iapourlesjeux,
-    projettut,
     droit,
     stage,
   } = matieres;
@@ -34,9 +32,8 @@ const calculmoyenneS2 = (matieres: Matieres): number => {
         devlogicielslibres * 6 +
         devcg * 3 +
         iapourlesjeux * 3 +
-        projettut * 1.5 +
         droit * 1.5) /
-      27
+      25.5
     );
   } else {
     return (
@@ -45,10 +42,9 @@ const calculmoyenneS2 = (matieres: Matieres): number => {
         devlogicielslibres * 6 +
         devcg * 3 +
         iapourlesjeux * 3 +
-        projettut * 1.5 +
         droit * 1.5 +
         stage * 1.5) /
-      28.5
+      27
     );
   }
 };
@@ -72,7 +68,6 @@ export default function L3S2() {
       devlogicielslibres: Number(formData.get("devlogicielslibres")),
       devcg: Number(formData.get("devcg")),
       iapourlesjeux: Number(formData.get("iapourlesjeux")),
-      projettut: Number(formData.get("projettut")),
       droit: Number(formData.get("droit")),
     };
 
@@ -155,16 +150,6 @@ export default function L3S2() {
             max={20}
             name="iapourlesjeux"
             placeholder="IA pour les jeux"
-            className="border border-gray-300 p-2 rounded"
-            required={true}
-          />
-          <input
-            type="number"
-            step={0.001}
-            min={0}
-            max={20}
-            name="projettut"
-            placeholder="Projet tuteuré : implémentation"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
