@@ -5,28 +5,27 @@ import { useState } from "react";
 
 interface Matieres {
   s1: number;
-  pi: number;
-  pl: number;
-  inf: number;
-  pdlmdj: number;
-  cgr: number;
-  oic: number;
-  anglais: number;
-  ec: number;
+  algo: number;
+  poo: number;
+  sysreseau: number;
+  devwebbdd: number;
+  imageson: number;
+  histoire: number;
+  oral: number;
 }
 
 const calculmoyenneS2 = (matieres: Matieres): number => {
-  const { pi, pl, inf, pdlmdj, cgr, oic, anglais, ec } = matieres;
+  const { algo, poo, sysreseau, devwebbdd, imageson, histoire, oral } =
+    matieres;
 
   return (
-    (pi * 6 +
-      pl * 6 +
-      inf * 6 +
-      pdlmdj * 3 +
-      cgr * 3 +
-      oic * 1.5 +
-      anglais * 1.5 +
-      ec * 1.5) /
+    (algo * 6 +
+      poo * 6 +
+      sysreseau * 6 +
+      devwebbdd * 3 +
+      imageson * 3 +
+      histoire * 1.5 +
+      oral * 1.5) /
     27
   );
 };
@@ -38,21 +37,20 @@ const calculmoyenneAnnee = (matieres: Matieres): number => {
   return (s1 + s2) / 2;
 };
 
-export default function L1S2() {
+export default function L2S2() {
   const [moyenneS2, setMoyenneS2] = useState<number | null>(null);
   const [moyenneAnnee, setMoyenneAnnee] = useState<number | null>(null);
 
   const onSubmit = (formData: FormData) => {
     const matieres: Matieres = {
       s1: Number(formData.get("s1")),
-      pi: Number(formData.get("pi")),
-      pl: Number(formData.get("pl")),
-      inf: Number(formData.get("inf")),
-      pdlmdj: Number(formData.get("pdlmdj")),
-      cgr: Number(formData.get("cgr")),
-      oic: Number(formData.get("oic")),
-      anglais: Number(formData.get("anglais")),
-      ec: Number(formData.get("ec")),
+      algo: Number(formData.get("algo")),
+      poo: Number(formData.get("poo")),
+      sysreseau: Number(formData.get("sysreseau")),
+      devwebbdd: Number(formData.get("devwebbdd")),
+      imageson: Number(formData.get("imageson")),
+      histoire: Number(formData.get("histoire")),
+      oral: Number(formData.get("oral")),
     };
 
     setMoyenneS2(Math.round(calculmoyenneS2(matieres) * 1000) / 1000);
@@ -88,8 +86,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pi"
-            placeholder="Impérative"
+            name="algo"
+            placeholder="Algo et structs de données 2"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -98,8 +96,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pl"
-            placeholder="Logique"
+            name="poo"
+            placeholder="Programmation orientée objet"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -108,8 +106,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="inf"
-            placeholder="Fondamentale"
+            name="sysreseau"
+            placeholder="Système & Réseaux"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -118,8 +116,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pdlmdj"
-            placeholder="Programmation moteurs"
+            name="devwebbdd"
+            placeholder="Dev web & BDD"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -128,8 +126,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="cgr"
-            placeholder="Resources"
+            name="imageson"
+            placeholder="Images et son"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -138,8 +136,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="oic"
-            placeholder="Outils informatiques"
+            name="histoire"
+            placeholder="Histoire de l'info"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -148,18 +146,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="anglais"
-            placeholder="Anglais"
-            className="border border-gray-300 p-2 rounded"
-            required={true}
-          />
-          <input
-            type="number"
-            step={0.001}
-            min={0}
-            max={20}
-            name="ec"
-            placeholder="EC Libre"
+            name="oral"
+            placeholder="Restitution orale de connaissances"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />

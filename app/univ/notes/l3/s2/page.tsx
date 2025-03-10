@@ -5,30 +5,52 @@ import { useState } from "react";
 
 interface Matieres {
   s1: number;
-  pi: number;
-  pl: number;
-  inf: number;
-  pdlmdj: number;
-  cgr: number;
-  oic: number;
-  anglais: number;
-  ec: number;
+  ia: number;
+  langues: number;
+  devlogicielslibres: number;
+  devcg: number;
+  iapourlesjeux: number;
+  projettut: number;
+  droit: number;
+  stage?: number;
 }
 
 const calculmoyenneS2 = (matieres: Matieres): number => {
-  const { pi, pl, inf, pdlmdj, cgr, oic, anglais, ec } = matieres;
+  const {
+    ia,
+    langues,
+    devlogicielslibres,
+    devcg,
+    iapourlesjeux,
+    projettut,
+    droit,
+    stage,
+  } = matieres;
 
-  return (
-    (pi * 6 +
-      pl * 6 +
-      inf * 6 +
-      pdlmdj * 3 +
-      cgr * 3 +
-      oic * 1.5 +
-      anglais * 1.5 +
-      ec * 1.5) /
-    27
-  );
+  if (!stage) {
+    return (
+      (ia * 6 +
+        langues * 6 +
+        devlogicielslibres * 6 +
+        devcg * 3 +
+        iapourlesjeux * 3 +
+        projettut * 1.5 +
+        droit * 1.5) /
+      27
+    );
+  } else {
+    return (
+      (ia * 6 +
+        langues * 6 +
+        devlogicielslibres * 6 +
+        devcg * 3 +
+        iapourlesjeux * 3 +
+        projettut * 1.5 +
+        droit * 1.5 +
+        stage * 1.5) /
+      28.5
+    );
+  }
 };
 
 const calculmoyenneAnnee = (matieres: Matieres): number => {
@@ -38,22 +60,25 @@ const calculmoyenneAnnee = (matieres: Matieres): number => {
   return (s1 + s2) / 2;
 };
 
-export default function L1S2() {
+export default function L3S2() {
   const [moyenneS2, setMoyenneS2] = useState<number | null>(null);
   const [moyenneAnnee, setMoyenneAnnee] = useState<number | null>(null);
 
   const onSubmit = (formData: FormData) => {
     const matieres: Matieres = {
       s1: Number(formData.get("s1")),
-      pi: Number(formData.get("pi")),
-      pl: Number(formData.get("pl")),
-      inf: Number(formData.get("inf")),
-      pdlmdj: Number(formData.get("pdlmdj")),
-      cgr: Number(formData.get("cgr")),
-      oic: Number(formData.get("oic")),
-      anglais: Number(formData.get("anglais")),
-      ec: Number(formData.get("ec")),
+      ia: Number(formData.get("ia")),
+      langues: Number(formData.get("langues")),
+      devlogicielslibres: Number(formData.get("devlogicielslibres")),
+      devcg: Number(formData.get("devcg")),
+      iapourlesjeux: Number(formData.get("iapourlesjeux")),
+      projettut: Number(formData.get("projettut")),
+      droit: Number(formData.get("droit")),
     };
+
+    if (formData.get("stage")) {
+      matieres.stage = Number(formData.get("stage"));
+    }
 
     setMoyenneS2(Math.round(calculmoyenneS2(matieres) * 1000) / 1000);
     setMoyenneAnnee(Math.round(calculmoyenneAnnee(matieres) * 1000) / 1000);
@@ -88,8 +113,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pi"
-            placeholder="Impérative"
+            name="ia"
+            placeholder="IA et apprentissage"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -98,8 +123,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pl"
-            placeholder="Logique"
+            name="langues"
+            placeholder="Ingénierie des langues"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -108,8 +133,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="inf"
-            placeholder="Fondamentale"
+            name="devlogicielslibres"
+            placeholder="Dev de logiciels libres"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -118,8 +143,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pdlmdj"
-            placeholder="Programmation moteurs"
+            name="devcg"
+            placeholder="Programmation de CG"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -128,8 +153,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="cgr"
-            placeholder="Resources"
+            name="iapourlesjeux"
+            placeholder="IA pour les jeux"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -138,8 +163,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="oic"
-            placeholder="Outils informatiques"
+            name="projettut"
+            placeholder="Projet tuteuré : implémentation"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -148,8 +173,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="anglais"
-            placeholder="Anglais"
+            name="droit"
+            placeholder="Droit, éthique, informatique"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -158,10 +183,9 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="ec"
-            placeholder="EC Libre"
+            name="stage"
+            placeholder="Stage (facultatif)"
             className="border border-gray-300 p-2 rounded"
-            required={true}
           />
         </div>
         <button

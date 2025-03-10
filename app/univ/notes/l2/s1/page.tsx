@@ -4,59 +4,45 @@ import Form from "next/form";
 import { useState } from "react";
 
 interface Matieres {
-  s1: number;
-  pi: number;
-  pl: number;
-  inf: number;
-  pdlmdj: number;
-  cgr: number;
-  oic: number;
+  algo: number;
+  pia: number;
+  pfa: number;
+  algog: number;
+  introia: number;
+  projetpro: number;
   anglais: number;
-  ec: number;
 }
 
-const calculmoyenneS2 = (matieres: Matieres): number => {
-  const { pi, pl, inf, pdlmdj, cgr, oic, anglais, ec } = matieres;
+const calculmoyenneS1 = (matieres: Matieres): number => {
+  const { algo, pia, pfa, algog, introia, projetpro, anglais } = matieres;
 
   return (
-    (pi * 6 +
-      pl * 6 +
-      inf * 6 +
-      pdlmdj * 3 +
-      cgr * 3 +
-      oic * 1.5 +
-      anglais * 1.5 +
-      ec * 1.5) /
+    (algo * 6 +
+      pia * 6 +
+      pfa * 6 +
+      algog * 3 +
+      introia * 3 +
+      projetpro * 1.5 +
+      anglais * 1.5) /
     27
   );
 };
 
-const calculmoyenneAnnee = (matieres: Matieres): number => {
-  const { s1 } = matieres;
-  const s2 = calculmoyenneS2(matieres);
-
-  return (s1 + s2) / 2;
-};
-
-export default function L1S2() {
-  const [moyenneS2, setMoyenneS2] = useState<number | null>(null);
-  const [moyenneAnnee, setMoyenneAnnee] = useState<number | null>(null);
+export default function L2S1() {
+  const [moyenneS1, setMoyenneS1] = useState<number | null>(null);
 
   const onSubmit = (formData: FormData) => {
     const matieres: Matieres = {
-      s1: Number(formData.get("s1")),
-      pi: Number(formData.get("pi")),
-      pl: Number(formData.get("pl")),
-      inf: Number(formData.get("inf")),
-      pdlmdj: Number(formData.get("pdlmdj")),
-      cgr: Number(formData.get("cgr")),
-      oic: Number(formData.get("oic")),
+      algo: Number(formData.get("algo")),
+      pia: Number(formData.get("pia")),
+      pfa: Number(formData.get("pfa")),
+      algog: Number(formData.get("algog")),
+      introia: Number(formData.get("introia")),
+      projetpro: Number(formData.get("projetpro")),
       anglais: Number(formData.get("anglais")),
-      ec: Number(formData.get("ec")),
     };
 
-    setMoyenneS2(Math.round(calculmoyenneS2(matieres) * 1000) / 1000);
-    setMoyenneAnnee(Math.round(calculmoyenneAnnee(matieres) * 1000) / 1000);
+    setMoyenneS1(Math.round(calculmoyenneS1(matieres) * 1000) / 1000);
   };
 
   return (
@@ -78,8 +64,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="s1"
-            placeholder="Semestre 1"
+            name="algo"
+            placeholder="Algo et structs de données 1"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -88,8 +74,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pi"
-            placeholder="Impérative"
+            name="pia"
+            placeholder="Impérative avancée"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -98,8 +84,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pl"
-            placeholder="Logique"
+            name="pfa"
+            placeholder="Fonctionnelle avancée"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -108,8 +94,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="inf"
-            placeholder="Fondamentale"
+            name="algog"
+            placeholder="Algo prog graphique"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -118,8 +104,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pdlmdj"
-            placeholder="Programmation moteurs"
+            name="introia"
+            placeholder="Intro IA"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -128,18 +114,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="cgr"
-            placeholder="Resources"
-            className="border border-gray-300 p-2 rounded"
-            required={true}
-          />
-          <input
-            type="number"
-            step={0.001}
-            min={0}
-            max={20}
-            name="oic"
-            placeholder="Outils informatiques"
+            name="projetpro"
+            placeholder="Projet Pro"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -153,16 +129,6 @@ export default function L1S2() {
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
-          <input
-            type="number"
-            step={0.001}
-            min={0}
-            max={20}
-            name="ec"
-            placeholder="EC Libre"
-            className="border border-gray-300 p-2 rounded"
-            required={true}
-          />
         </div>
         <button
           type="submit"
@@ -171,13 +137,10 @@ export default function L1S2() {
           Submit
         </button>
       </Form>
-      {moyenneS2 && moyenneAnnee && (
+      {moyenneS1 && (
         <div className="mt-8">
           <p className="text-xl font-bold">
-            Moyenne du semestre 2: {moyenneS2}
-          </p>
-          <p className="text-xl font-bold">
-            Moyenne de l&apos;année: {moyenneAnnee}
+            Moyenne du semestre 2: {moyenneS1}
           </p>
         </div>
       )}
