@@ -14,10 +14,10 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: "Gitit",
-    description: "A simple CLI tool to manage your GitHub repositories.",
+    name: "Gitwarp",
+    description: "Gitwarp is a tool that helps you to manage git repositories by simplifying all the commands.",
     img: "https://preview.redd.it/g38817mqb1361.png?auto=webp&s=61f191d6a42b645d77cbbc6ce5d6f08686b6e77a",
-    href: "https://github.com/ItsMeViipeR/gitit",
+    href: "https://github.com/ItsMeViipeR/Gitwarp",
   },
   {
     name: "files.dll",
