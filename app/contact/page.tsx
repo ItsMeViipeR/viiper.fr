@@ -9,7 +9,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("Envoi en cours...");
+    setStatus("Sending message...");
 
     const res = await fetch("/api/contact", {
       method: "POST",
@@ -18,35 +18,80 @@ export default function Contact() {
     });
 
     if (res.ok) {
-      setStatus("Message envoyé !");
+      setStatus("Message sent!");
       setEmail("");
       setMessage("");
     } else {
-      setStatus("Erreur lors de l’envoi");
+      setStatus("Error sending message. Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
-      <input
-        type="email"
-        placeholder="Votre email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-        className="border p-2 w-full"
-      />
-      <textarea
-        placeholder="Votre message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        required
-        className="border p-2 w-full h-32"
-      />
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2">
-        Envoyer
-      </button>
-      <p>{status}</p>
-    </form>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-purple-100 px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-xl rounded-2xl p-8 space-y-6 max-w-md w-full border border-gray-100"
+      >
+        <h2 className="text-3xl font-bold text-center text-blue-700 mb-2">
+          Contact me
+        </h2>
+        <p className="text-center text-gray-500 mb-4">
+          Have a question or want to work together? Fill out the form below and
+          I'll get back to you as soon as possible!
+        </p>
+        <div>
+          <label
+            className="block text-gray-700 font-medium mb-1"
+            htmlFor="email"
+          >
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Your email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          />
+        </div>
+        <div>
+          <label
+            className="block text-gray-700 font-medium mb-1"
+            htmlFor="message"
+          >
+            Message
+          </label>
+          <textarea
+            id="message"
+            placeholder="Your message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+            className="border border-gray-300 rounded-lg p-3 w-full h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold px-4 py-3 rounded-lg shadow hover:from-blue-600 hover:to-purple-600 transition"
+        >
+          Envoyer
+        </button>
+        {status && (
+          <p
+            className={`text-center text-sm mt-2 ${
+              status === "Message sent!"
+                ? "text-green-600"
+                : status === "Sending message..."
+                ? "text-orange-500"
+                : "text-red-500"
+            }`}
+          >
+            {status}
+          </p>
+        )}
+      </form>
+    </div>
   );
 }
