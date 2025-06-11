@@ -9,16 +9,15 @@ export async function POST(request: Request) {
   }
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.PASSWORD,
-    },
+    host: "ssl0.ovh.net",
+    port: 465,
+    secure: true,
+    auth: { user: process.env.EMAIL, pass: process.env.PASSWORD },
   });
 
   try {
     await transporter.sendMail({
-      from: `"Contact" <${process.env.EMAIL}>`,
+      from: `"Mailer" <mailer@viiper.fr>`,
       to: process.env.EMAIL,
       replyTo: email,
       subject: `Nouveau message de ${email}`,
