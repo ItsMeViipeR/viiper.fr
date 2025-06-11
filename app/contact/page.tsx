@@ -37,7 +37,7 @@ export default function Contact() {
         </h2>
         <p className="text-center text-gray-500 mb-4">
           Have a question or want to work together? Fill out the form below and
-          I'll get back to you as soon as possible!
+          I&apos;ll get back to you as soon as possible!
         </p>
         <div>
           <label
