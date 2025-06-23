@@ -19,7 +19,7 @@ const calculmoyenneS2 = (matieres: Matieres): number => {
   const { pi, pl, inf, pdlmdj, cgr, oic, anglais, ec } = matieres;
 
   return (
-    (pi * 6 +
+    (pi * 12 +
       pl * 6 +
       inf * 6 +
       pdlmdj * 3 +
