@@ -27,7 +27,7 @@ const calculmoyenneS2 = (matieres: Matieres): number => {
       oic * 1.5 +
       anglais * 1.5 +
       ec * 1.5) /
-    27
+    34.5
   );
 };
 
