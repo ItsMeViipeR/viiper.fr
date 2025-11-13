@@ -15,7 +15,8 @@ type Project = {
 const projects: Project[] = [
   {
     name: "Gitwarp",
-    description: "Gitwarp is a tool that helps you to manage git repositories by simplifying all the commands.",
+    description:
+      "Gitwarp is a tool that helps you to manage git repositories by simplifying all the commands.",
     img: "https://preview.redd.it/g38817mqb1361.png?auto=webp&s=61f191d6a42b645d77cbbc6ce5d6f08686b6e77a",
     href: "https://github.com/ItsMeViipeR/Gitwarp",
   },
@@ -217,6 +218,20 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Footer with link to /terms.pdf */}
+        <footer className="py-6 bg-black text-center">
+          <div className="container mx-auto px-4">
+            <a
+              href="/terms.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white underline"
+            >
+              View Terms (PDF)
+            </a>
+          </div>
+        </footer>
       </div>
     </>
   );
