@@ -55,7 +55,7 @@ const calculmoyenneAnnee = (matieres: Matieres): number => {
   const { s1 } = matieres;
   const s2 = calculmoyenneS2(matieres);
 
-  return (s1 + s2) / 2;
+  return (s1 + s2!) / 2;
 };
 
 export default function L3S2() {
