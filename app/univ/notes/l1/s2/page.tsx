@@ -18,17 +18,19 @@ interface Matieres {
 const calculmoyenneS2 = (matieres: Matieres): number => {
   const { pi, pl, inf, pdlmdj, cgr, oic, anglais, ec } = matieres;
 
-  return (
-    (pi * 12 +
-      pl * 6 +
-      inf * 6 +
-      pdlmdj * 3 +
-      cgr * 3 +
-      oic * 1.5 +
-      anglais * 1.5 +
-      ec * 1.5) /
-    34.5
-  );
+  // UE Informatique 2 (18 ECTS)
+  const info = (pi * 12 + pl * 6 + inf * 6) / 24;
+
+  // UE Mineure (6 ECTS)
+  const mineure = (pdlmdj * 3 + cgr * 3) / 6;
+
+  // UE Compétences transversales (3 ECTS)
+  const transversales = (oic * 3 + anglais * 3 + ec * 3) / 9;
+
+  // Moyenne pondérée: 18 + 6 + 3 = 27 ECTS
+  const s2 = (info * 18 + mineure * 6 + transversales * 3) / 27;
+
+  return s2;
 };
 
 const calculmoyenneAnnee = (matieres: Matieres): number => {
@@ -98,8 +100,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="pl"
-            placeholder="Logique"
+            name="inf"
+            placeholder="Fondamentale"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
@@ -108,8 +110,8 @@ export default function L1S2() {
             step={0.001}
             min={0}
             max={20}
-            name="inf"
-            placeholder="Fondamentale"
+            name="pl"
+            placeholder="Logique"
             className="border border-gray-300 p-2 rounded"
             required={true}
           />
