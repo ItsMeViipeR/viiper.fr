@@ -12,9 +12,10 @@ interface Matieres {
   iapourlesjeux: number;
   droit: number;
   stage?: number;
+  projtuto?: number;
 }
 
-const calculmoyenneS2 = (matieres: Matieres): number => {
+const calculmoyenneS2 = (matieres: Matieres): number | null => {
   const {
     ia,
     langues,
@@ -23,30 +24,31 @@ const calculmoyenneS2 = (matieres: Matieres): number => {
     iapourlesjeux,
     droit,
     stage,
+    projtuto,
   } = matieres;
 
-  if (!stage) {
-    return (
-      (ia * 6 +
-        langues * 6 +
-        devlogicielslibres * 6 +
-        devcg * 3 +
-        iapourlesjeux * 3 +
-        droit * 1.5) /
-      25.5
-    );
-  } else {
-    return (
-      (ia * 6 +
-        langues * 6 +
-        devlogicielslibres * 6 +
-        devcg * 3 +
-        iapourlesjeux * 3 +
-        droit * 1.5 +
-        stage * 1.5) /
-      27
-    );
+  // UE Informatique 6 (18 ECTS)
+  const info = (ia * 6 + langues * 6 + devlogicielslibres * 6) / 18;
+
+  // UE Mineure (6 ECTS)
+  const mineure = (devcg * 3 + iapourlesjeux * 3) / 6;
+
+  if (stage === undefined && projtuto === undefined) {
+    return null;
   }
+
+  // UE Compétences transversales (3 ECTS)
+  const transversales =
+    stage !== undefined
+      ? (droit * 3 + stage * 3) / 6
+      : projtuto !== undefined
+      ? (droit * 3 + projtuto * 3) / 6
+      : 0;
+
+  // Moyenne pondérée: 18 + 6 + 3 = 27 ECTS
+  const s2 = (info * 18 + mineure * 6 + transversales * 3) / 27;
+
+  return s2;
 };
 
 const calculmoyenneAnnee = (matieres: Matieres): number => {
@@ -59,8 +61,12 @@ const calculmoyenneAnnee = (matieres: Matieres): number => {
 export default function L3S2() {
   const [moyenneS2, setMoyenneS2] = useState<number | null>(null);
   const [moyenneAnnee, setMoyenneAnnee] = useState<number | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const onSubmit = (formData: FormData) => {
+    setErrorMessage(null);
+    setMoyenneS2(null);
+    setMoyenneAnnee(null);
     const matieres: Matieres = {
       s1: Number(formData.get("s1")),
       ia: Number(formData.get("ia")),
@@ -75,7 +81,20 @@ export default function L3S2() {
       matieres.stage = Number(formData.get("stage"));
     }
 
-    setMoyenneS2(Math.round(calculmoyenneS2(matieres) * 1000) / 1000);
+    if (formData.get("projtuto")) {
+      matieres.projtuto = Number(formData.get("projtuto"));
+    }
+
+    const moyenne: number | null = calculmoyenneS2(matieres);
+
+    if (moyenne === null) {
+      setErrorMessage(
+        "Veuillez entrer une note pour le stage ou le projet tutoré."
+      );
+      return;
+    }
+
+    setMoyenneS2(Math.round(moyenne * 1000) / 1000);
     setMoyenneAnnee(Math.round(calculmoyenneAnnee(matieres) * 1000) / 1000);
   };
 
@@ -172,6 +191,15 @@ export default function L3S2() {
             placeholder="Stage (facultatif)"
             className="border border-gray-300 p-2 rounded"
           />
+          <input
+            type="number"
+            step={0.001}
+            min={0}
+            max={20}
+            name="projtuto"
+            placeholder="Projet tutoré (facultatif)"
+            className="border border-gray-300 p-2 rounded"
+          />
         </div>
         <button
           type="submit"
@@ -180,6 +208,9 @@ export default function L3S2() {
           Submit
         </button>
       </Form>
+      {errorMessage && (
+        <div className="mt-4 text-red-500 font-bold">{errorMessage}</div>
+      )}
       {moyenneS2 && moyenneAnnee && (
         <div className="mt-8">
           <p className="text-xl font-bold">

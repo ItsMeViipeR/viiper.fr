@@ -18,16 +18,19 @@ const calculmoyenneS2 = (matieres: Matieres): number => {
   const { algo, poo, sysreseau, devwebbdd, imageson, histoire, oral } =
     matieres;
 
-  return (
-    (algo * 6 +
-      poo * 6 +
-      sysreseau * 6 +
-      devwebbdd * 3 +
-      imageson * 3 +
-      histoire * 1.5 +
-      oral * 1.5) /
-    27
-  );
+  // UE Informatique 4 (18 ECTS)
+  const info = (algo * 6 + poo * 6 + sysreseau * 6) / 18;
+
+  // UE Mineure (6 ECTS)
+  const mineure = (devwebbdd * 3 + imageson * 3) / 6;
+
+  // UE Compétences transversales (3 ECTS)
+  const transversales = (histoire * 3 + oral * 3) / 6;
+
+  // Moyenne pondérée: 18 + 6 + 3 = 27 ECTS
+  const s2 = (info * 18 + mineure * 6 + transversales * 3) / 27;
+
+  return s2;
 };
 
 const calculmoyenneAnnee = (matieres: Matieres): number => {

@@ -17,16 +17,19 @@ const calculmoyenneS1 = (matieres: Matieres): number => {
   const { algoav, intcomp, secu, moteursdejeu, devmobile, anglais, objmaster } =
     matieres;
 
-  return (
-    (algoav * 6 +
-      intcomp * 6 +
-      secu * 6 +
-      moteursdejeu * 3 +
-      devmobile * 3 +
-      anglais * 1.5 +
-      objmaster * 1.5) /
-    27
-  );
+  // UE Informatique 3 (18 ECTS)
+  const info = (algoav * 6 + intcomp * 6 + secu * 6) / 18;
+
+  // UE Mineure (6 ECTS)
+  const mineure = (moteursdejeu * 3 + devmobile * 3) / 6;
+
+  // UE Compétences transversales (3 ECTS)
+  const transversales = (anglais * 3 + objmaster * 3) / 6;
+
+  // Moyenne pondérée: 18 + 6 + 3 = 27 ECTS
+  const s1 = (info * 18 + mineure * 6 + transversales * 3) / 27;
+
+  return s1;
 };
 
 export default function L2S1() {
