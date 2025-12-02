@@ -16,16 +16,24 @@ interface Matieres {
 const calculmoyenneS1 = (matieres: Matieres): number => {
   const { mdp, pf, archi, intro, maths, gil, pdm } = matieres;
 
-  return (
-    (mdp * 6 +
-      pf * 6 +
-      archi * 6 +
-      intro * 3 +
-      maths * 3 +
-      gil * 1.5 +
-      pdm * 1.5) /
-    27
-  );
+  // UE Informatique 1 (18 ECTS)
+  const info = (mdp * 6 + pf * 6 + archi * 6) / 18;
+
+  // UE Choix mineure / Conception JV (6 ECTS)
+  const mineure = (intro * 3 + maths * 3) / 6;
+
+  // UE Compétences transversales (3 ECTS)
+  const transversales = (gil * 3 + pdm * 3) / 6;
+
+  // Moyenne pondérée: 18 + 6 + 3 = 27 ECTS
+  const s1 = (info * 18 + mineure * 6 + transversales * 3) / 27;
+
+  console.log("Info:", info);
+  console.log("JV:", mineure);
+  console.log("Transversales:", transversales);
+  console.log("S1:", s1);
+
+  return s1;
 };
 
 export default function L1S1() {
