@@ -49,9 +49,9 @@ export default function L2S1() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold mb-8">
-        Calculez votre moyenne de l&apos;année
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-white text-4xl md:text-5xl font-bold mb-8 text-center">
+        Calculez votre moyenne du semestre 1
       </h1>
       <Form
         onSubmit={(e) => {
@@ -59,7 +59,7 @@ export default function L2S1() {
           onSubmit(new FormData(e.target as HTMLFormElement));
         }}
         action="#"
-        className="bg-white p-8 rounded-lg shadow-md w-full max-w-xl"
+        className="w-full max-w-2xl backdrop-blur-2xl p-8 rounded-3xl shadow-2xl transition-all duration-300"
       >
         <div className="grid grid-cols-2 gap-4">
           <input
@@ -69,7 +69,7 @@ export default function L2S1() {
             max={20}
             name="algo"
             placeholder="Algo et structs de données 1"
-            className="border border-gray-300 p-2 rounded"
+            className="px-4 py-3 mb-4 rounded-md bg-transparent border border-gray-300 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             required={true}
           />
           <input
@@ -79,7 +79,7 @@ export default function L2S1() {
             max={20}
             name="pia"
             placeholder="Impérative avancée"
-            className="border border-gray-300 p-2 rounded"
+            className="px-4 py-3 mb-4 rounded-md bg-transparent border border-gray-300 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             required={true}
           />
           <input
@@ -89,7 +89,7 @@ export default function L2S1() {
             max={20}
             name="pfa"
             placeholder="Fonctionnelle avancée"
-            className="border border-gray-300 p-2 rounded"
+            className="px-4 py-3 mb-4 rounded-md bg-transparent border border-gray-300 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             required={true}
           />
           <input
@@ -99,7 +99,7 @@ export default function L2S1() {
             max={20}
             name="algog"
             placeholder="Algo prog graphique"
-            className="border border-gray-300 p-2 rounded"
+            className="px-4 py-3 mb-4 rounded-md bg-transparent border border-gray-300 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             required={true}
           />
           <input
@@ -109,7 +109,7 @@ export default function L2S1() {
             max={20}
             name="introia"
             placeholder="Intro IA"
-            className="border border-gray-300 p-2 rounded"
+            className="px-4 py-3 mb-4 rounded-md bg-transparent border border-gray-300 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             required={true}
           />
           <input
@@ -119,7 +119,7 @@ export default function L2S1() {
             max={20}
             name="projetpro"
             placeholder="Projet Pro"
-            className="border border-gray-300 p-2 rounded"
+            className="px-4 py-3 mb-4 rounded-md bg-transparent border border-gray-300 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             required={true}
           />
           <input
@@ -129,7 +129,7 @@ export default function L2S1() {
             max={20}
             name="anglais"
             placeholder="Anglais"
-            className="border border-gray-300 p-2 rounded"
+            className="px-4 py-3 mb-4 rounded-md bg-transparent border border-gray-300 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             required={true}
           />
         </div>
@@ -140,12 +140,27 @@ export default function L2S1() {
           Submit
         </button>
       </Form>
-      {moyenneS1 && (
-        <div className="mt-8">
-          <p className="text-xl font-bold">
-            Moyenne du semestre 2: {moyenneS1}
-          </p>
-        </div>
+      {moyenneS1 !== null && (
+        <>
+          <div className="mt-8 w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="backdrop-blur-xl bg-gradient-to-br from-purple-600/40 via-purple-500/30 to-blue-500/40 border-2 border-purple-300/40 p-6 rounded-2xl shadow-2xl transition-transform duration-300 hover:bg-gradient-to-br hover:from-blue-600/40 hover:via-blue-500/30 hover:to-purple-500/40 hover:border-blue-300/40">
+              <p className="text-sm font-medium text-white mb-1">Semestre 1</p>
+              <p className="text-5xl font-bold text-white drop-shadow-lg">
+                <span>{moyenneS1}</span>/20
+              </p>
+            </div>
+          </div>
+
+          {moyenneS1 >= 10 ? (
+            <p className="mt-6 text-lime-300 font-semibold">
+              Félicitations ! Vous avez validé votre semestre 1.
+            </p>
+          ) : (
+            <p className="mt-6 text-red-600 font-semibold">
+              Malheureusement, vous n&apos;avez pas validé votre semestre 1.
+            </p>
+          )}
+        </>
       )}
     </div>
   );

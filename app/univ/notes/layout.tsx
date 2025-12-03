@@ -14,21 +14,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Calculateur de moyenne Paris 8",
-  description: "Calculez votre moyenne du second semestre et de l'année",
+  description: "Calculez votre moyenne par semestre et pour l'année",
 };
 
-export default function RootLayout({
+export default function NotesLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <div className="min-h-screen text-black bg-gradient-to-b from-purple-800 to-blue-900">
+      <div className="relative z-10">{children}</div>
+    </div>
   );
 }
